@@ -19,7 +19,8 @@ Ask about:
 • Columns  
 • Lineage  
 • Confluence docs  
-• GitHub SQL  
+• GitHub SQL 
+• Lineage information of columns.
 """
 )
 

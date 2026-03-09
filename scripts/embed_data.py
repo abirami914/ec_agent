@@ -15,7 +15,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from sentence_transformers import CrossEncoder
 
 app = FastAPI()
-#embeddings = OpenAIEmbeddings(model="text-embedding-3-small", openai_api_key="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")
+
 embeddings = HuggingFaceEmbeddings(
     model_name="BAAI/bge-base-en-v1.5",
     model_kwargs={'device': 'cpu'},
@@ -24,7 +24,7 @@ embeddings = HuggingFaceEmbeddings(
 # --- REDIS SETUP ---
 redis_config = RedisConfig(
     index_name="bofa_enterprise_catalog",
-    redis_url="redis://localhost:6379",
+    redis_url="redis://localhost:6378",
     distance_metric="COSINE", 
     embedding_dimensions=768, # 
     indexing_algorithm="FLAT", # Simplest for MVP
@@ -211,7 +211,6 @@ async def run_ingestion():
     # 2. GitHub (DDLs/SQL)
     gh_loader = GitLoader(
         repo_path=r"C:\Users\Abirami\Documents\credit-union-analytics-platform",
-        #access_token="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",
         branch="main"
     )
     
